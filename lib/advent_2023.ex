@@ -1,18 +1,23 @@
 defmodule Advent2023 do
-  alias Advent2023.{Day1, Day2, Day3, Day4}
+  alias Advent2023.{Day1, Day2, Day3, Day4, Day5}
 
-  def run(day) do
-    input = read_input(day)
-    run_day(day, input)
+  def run(day, suffix \\ "") do
+    input = read_input(day, suffix)
+
+    case day_module(day) do
+      nil -> nil
+      module -> {module.part1(input), module.part2(input)}
+    end
   end
 
-  defp run_day(1, input), do: {Day1.part1(input), Day1.part2(input)}
-  defp run_day(2, input), do: {Day2.part1(input), Day2.part2(input)}
-  defp run_day(3, input), do: {Day3.part1(input), Day3.part2(input)}
-  defp run_day(4, input), do: {Day4.part1(input), Day4.part2(input)}
-  defp run_day(_, _), do: nil
+  defp day_module(1), do: Day1
+  defp day_module(2), do: Day2
+  defp day_module(3), do: Day3
+  defp day_module(4), do: Day4
+  defp day_module(5), do: Day5
+  defp day_module(_), do: nil
 
-  defp read_input(day) do
-    File.read!("input/day#{day}.txt")
+  defp read_input(day, suffix) do
+    File.read!("input/day#{day}#{suffix}.txt")
   end
 end
