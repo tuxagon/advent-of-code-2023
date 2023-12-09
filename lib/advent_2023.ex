@@ -1,5 +1,5 @@
 defmodule Advent2023 do
-  alias Advent2023.{Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8}
+  alias Advent2023.{Day1, Day2, Day3, Day4, Day5, Day6, Day7, Day8, Day9}
 
   def run(day, suffix \\ "") do
     input = read_input(day, suffix)
@@ -18,6 +18,7 @@ defmodule Advent2023 do
   defp day_module(6), do: Day6
   defp day_module(7), do: Day7
   defp day_module(8), do: Day8
+  defp day_module(9), do: Day9
   defp day_module(_), do: nil
 
   defp read_input(day, suffix) do
